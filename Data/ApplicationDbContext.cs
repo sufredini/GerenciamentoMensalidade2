@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using GerenciamentoMensalidade2.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace GerenciamentoMensalidade2.Data
@@ -9,5 +10,8 @@ namespace GerenciamentoMensalidade2.Data
             : base(options)
         {
         }
+
+        public DbSet<Plano> Plano { get; set; }
+        public DbSet<Alunos> Alunos { get; set; }
     }
 }
