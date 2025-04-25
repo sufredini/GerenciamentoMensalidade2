@@ -4,19 +4,16 @@ using GerenciamentoMensalidade2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace GerenciamentoMensalidade2.Data.Migrations
+namespace GerenciamentoMensalidade2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250424175322_Plano")]
-    partial class Plano
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,14 +22,111 @@ namespace GerenciamentoMensalidade2.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("GerenciamentoMensalidade2.Models.Plano", b =>
+            modelBuilder.Entity("GerenciamentoMensalidade2.Models.Administrador", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("AdministradorId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("Id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdministradorId"));
+
+                    b.Property<string>("Cpf")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Cpf");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Email");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Nome");
+
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Senha");
+
+                    b.HasKey("AdministradorId");
+
+                    b.ToTable("Administrador", (string)null);
+                });
+
+            modelBuilder.Entity("GerenciamentoMensalidade2.Models.Alunos", b =>
+                {
+                    b.Property<int>("AlunosId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AlunosId"));
+
+                    b.Property<string>("Cpf")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Cpf");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Nome");
+
+                    b.Property<int>("PlanoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Status");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Telefone");
+
+                    b.HasKey("AlunosId");
+
+                    b.HasIndex("PlanoId");
+
+                    b.ToTable("Alunos", (string)null);
+                });
+
+            modelBuilder.Entity("GerenciamentoMensalidade2.Models.Pagamento", b =>
+                {
+                    b.Property<int>("PagamentoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PagamentoId"));
+
+                    b.Property<int>("AlunosId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DtPagamento")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("DataPagamento");
+
+                    b.HasKey("PagamentoId");
+
+                    b.HasIndex("AlunosId");
+
+                    b.ToTable("Pagamento", (string)null);
+                });
+
+            modelBuilder.Entity("GerenciamentoMensalidade2.Models.Plano", b =>
+                {
+                    b.Property<int>("PlanoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PlanoId"));
 
                     b.Property<string>("DiasPorSemana")
                         .IsRequired()
@@ -44,9 +138,33 @@ namespace GerenciamentoMensalidade2.Data.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Nome");
 
-                    b.HasKey("Id");
+                    b.HasKey("PlanoId");
 
-                    b.ToTable("Plano");
+                    b.ToTable("Planos", (string)null);
+                });
+
+            modelBuilder.Entity("GerenciamentoMensalidade2.Models.RegistroEntradaSaida", b =>
+                {
+                    b.Property<int>("RegistroEntradaSaidaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RegistroEntradaSaidaId"));
+
+                    b.Property<string>("Entrada")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Entrada");
+
+                    b.Property<string>("Saida")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Saida");
+
+                    b.HasKey("RegistroEntradaSaidaId");
+
+                    b.ToTable("RegistroEntradaSaida", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -249,6 +367,28 @@ namespace GerenciamentoMensalidade2.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("GerenciamentoMensalidade2.Models.Alunos", b =>
+                {
+                    b.HasOne("GerenciamentoMensalidade2.Models.Plano", "Plano")
+                        .WithMany()
+                        .HasForeignKey("PlanoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Plano");
+                });
+
+            modelBuilder.Entity("GerenciamentoMensalidade2.Models.Pagamento", b =>
+                {
+                    b.HasOne("GerenciamentoMensalidade2.Models.Alunos", "Alunos")
+                        .WithMany()
+                        .HasForeignKey("AlunosId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Alunos");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

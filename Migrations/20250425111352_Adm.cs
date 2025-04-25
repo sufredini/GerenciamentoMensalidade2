@@ -2,26 +2,28 @@
 
 #nullable disable
 
-namespace GerenciamentoMensalidade2.Data.Migrations
+namespace GerenciamentoMensalidade2.Migrations
 {
     /// <inheritdoc />
-    public partial class Plano : Migration
+    public partial class Adm : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Plano",
+                name: "Administrador",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DiasPorSemana = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Cpf = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Senha = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Plano", x => x.Id);
+                    table.PrimaryKey("PK_Administrador", x => x.Id);
                 });
         }
 
@@ -29,7 +31,7 @@ namespace GerenciamentoMensalidade2.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Plano");
+                name: "Administrador");
         }
     }
 }
