@@ -1,37 +1,63 @@
 ﻿@model GerenciamentoMensalidade2.Models.Pagamento
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar Pagamento";
 }
 
-<h1>Editar</h1>
-
-<h4>Pagamento</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="PagamentoId" />
-            <div class="form-group">
-                <label asp-for="AlunosId" class="control-label"></label>
-                <select asp-for="AlunosId" class="form-control" asp-items="ViewBag.AlunosId"></select>
-                <span asp-validation-for="AlunosId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DtPagamento" class="control-label"></label>
-                <input asp-for="DtPagamento" class="form-control" />
-                <span asp-validation-for="DtPagamento" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Salvar" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="container mt-4">
+    <!-- Cabeçalho com título e botão de voltar -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mb-0">@ViewData["Title"]</h1>
+        <a asp-action="Index" class="btn btn-outline-secondary btn-lg">
+            <i class="bi bi-arrow-left me-1"></i> Voltar
+        </a>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Voltar</a>
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow">
+                <!-- Cabeçalho do card -->
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">Dados do Pagamento</h5>
+                </div>
+
+                <!-- Corpo do card / formulário -->
+                <div class="card-body">
+                    <form asp-action="Edit" method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                        <input type="hidden" asp-for="PagamentoId" />
+
+                        <div class="mb-3">
+                            <label asp-for="AlunosId" class="form-label"></label>
+                            <select asp-for="AlunosId"
+                                    asp-items="ViewBag.AlunosId"
+                                    class="form-select form-select-lg">
+                            </select>
+                            <span asp-validation-for="AlunosId" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="DtPagamento" class="form-label"></label>
+                            <input asp-for="DtPagamento"
+                                   type="date"
+                                   class="form-control form-control-lg" />
+                            <span asp-validation-for="DtPagamento" class="text-danger"></span>
+                        </div>
+
+                        <!-- Rodapé do card com botões -->
+                        <div class="card-footer bg-white text-end">
+                            <a asp-action="Index" class="btn btn-outline-secondary btn-lg me-2">
+                                <i class="bi bi-x-circle me-1"></i> Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-save me-1"></i> Salvar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @section Scripts {
