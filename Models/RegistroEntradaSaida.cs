@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml.Linq;
 
-namespace GerenciamentoMensalidade.Models
+namespace GerenciamentoMensalidade2.Models
 {
     [Table("RegistroEntradaSaida")]
 
@@ -10,7 +10,7 @@ namespace GerenciamentoMensalidade.Models
     {
         [Column("Id")]
         [Display(Name = "Id")]
-        public int Id { get; set; }
+        public int RegistroEntradaSaidaId { get; set; }
 
         [Column("Entrada")]
         [Display(Name = "Entrada")]
