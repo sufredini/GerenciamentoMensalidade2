@@ -8,7 +8,7 @@ namespace GerenciamentoMensalidade2.Models
     {
         [Column("Id")]
         [Display(Name = "Id do Aluno")]
-        public int Id { get; set; }
+        public int AlunosId { get; set; }
 
         [Column("Nome")]
         [Display(Name = "Nome do aluno")]
