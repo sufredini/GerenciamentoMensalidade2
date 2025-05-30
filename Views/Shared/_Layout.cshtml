@@ -10,11 +10,58 @@
     <!-- Seus estilos personalizados -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/GerenciamentoMensalidade2.styles.css" asp-append-version="true" />
+    <style>
+        .navbar-custom {
+            background: linear-gradient(90deg, #198754 0%, #20c997 100%) !important;
+        }
+
+            .navbar-custom .navbar-brand,
+            .navbar-custom .nav-link,
+            .navbar-custom .navbar-toggler {
+                color: #fff !important;
+            }
+
+                .navbar-custom .nav-link.active,
+                .navbar-custom .nav-link:focus,
+                .navbar-custom .nav-link:hover {
+                    color: #f8f9fa !important;
+                    background: rgba(255,255,255,0.08);
+                    border-radius: .5rem;
+                }
+
+            .navbar-custom .navbar-brand {
+                font-size: 1.5rem;
+                letter-spacing: 1px;
+            }
+
+            .navbar-custom .navbar-toggler {
+                border: none;
+            }
+
+                .navbar-custom .navbar-toggler:focus {
+                    box-shadow: none;
+                }
+
+        .footer-custom {
+            background: linear-gradient(90deg, #198754 0%, #20c997 100%);
+            color: #fff;
+        }
+
+            .footer-custom a {
+                color: #fff;
+                opacity: 0.85;
+            }
+
+                .footer-custom a:hover {
+                    opacity: 1;
+                    text-decoration: underline;
+                }
+    </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
     <!-- HEADER -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-custom shadow-sm">
             <div class="container">
                 <a class="navbar-brand fw-bold" asp-area="" asp-controller="Home" asp-action="Index">
                     <i class="bi bi-speedometer2 me-2"></i>Gerenciamento
@@ -30,7 +77,7 @@
                         <li class="nav-item">
                             <a class="nav-link @((ViewContext.RouteData.Values["Controller"]?.ToString()=="Home")?"active":"")"
                                asp-area="" asp-controller="Home" asp-action="Index">
-                                <i class="bi bi-house-door-fill me-1"></i>Home
+                                <i class="bi bi-house-door-fill me-1"></i>Início
                             </a>
                         </li>
                         <li class="nav-item">
@@ -81,19 +128,19 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-dark text-light py-3 mt-auto">
-        <div class="container d-flex justify-content-between align-items-center">
+    <footer class="footer-custom py-3 mt-auto">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
             <small>© 2025 GerenciamentoMensalidade2</small>
             <ul class="list-inline mb-0">
                 <li class="list-inline-item">
                     <a asp-area="" asp-controller="Home" asp-action="Privacy"
-                       class="text-decoration-none text-light">Privacidade</a>
+                       class="text-decoration-none">Privacidade</a>
                 </li>
                 <li class="list-inline-item">
-                    <a href="#" class="text-decoration-none text-light">Suporte</a>
+                    <a href="#" class="text-decoration-none">Suporte</a>
                 </li>
                 <li class="list-inline-item">
-                    <a href="#" class="text-decoration-none text-light">Contato</a>
+                    <a href="#" class="text-decoration-none">Contato</a>
                 </li>
             </ul>
         </div>

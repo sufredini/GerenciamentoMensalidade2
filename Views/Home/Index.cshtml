@@ -1,8 +1,98 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Início";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Bem vindo</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    .hero-section {
+        background: linear-gradient(90deg, #198754 0%, #20c997 100%);
+        color: #fff;
+        border-radius: 1.5rem;
+        box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.10);
+        padding: 3rem 2rem 2rem 2rem;
+        margin-bottom: 2.5rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .hero-section .bi {
+            font-size: 3.5rem;
+            opacity: 0.15;
+            position: absolute;
+            right: 2rem;
+            top: 2rem;
+        }
+
+    .feature-card {
+        border-radius: 1rem;
+        box-shadow: 0 0.25rem 1rem rgba(0,0,0,0.07);
+        transition: box-shadow 0.2s;
+        background: #fff;
+        height: 100%;
+    }
+
+        .feature-card:hover {
+            box-shadow: 0 0.5rem 1.5rem rgba(32,201,151,0.15);
+        }
+
+    .feature-icon {
+        font-size: 2.2rem;
+        color: #198754;
+    }
+</style>
+
+<div class="hero-section mb-5">
+    <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+        <div>
+            <h1 class="display-5 fw-bold mb-2">Bem-vindo ao Gerenciamento de Mensalidades</h1>
+            <p class="lead mb-3">
+                Controle completo de alunos, pagamentos, planos e registros de entrada/saída.<br>
+                Simplifique a administração da sua instituição com praticidade e segurança.
+            </p>
+            <a asp-controller="Alunos" asp-action="Index" class="btn btn-light btn-lg fw-semibold shadow-sm me-2">
+                <i class="bi bi-people-fill me-1"></i> Gerenciar Alunos
+            </a>
+            <a asp-controller="Pagamento" asp-action="Index" class="btn btn-outline-light btn-lg fw-semibold shadow-sm">
+                <i class="bi bi-cash-stack me-1"></i> Ver Pagamentos
+            </a>
+        </div>
+        <i class="bi bi-bar-chart-line"></i>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-6 col-lg-3">
+        <div class="feature-card p-4 text-center h-100">
+            <div class="feature-icon mb-2"><i class="bi bi-people-fill"></i></div>
+            <h5 class="fw-bold mb-1">Gestão de Alunos</h5>
+            <p class="mb-0">Cadastre, edite e acompanhe o histórico dos alunos de forma simples e rápida.</p>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="feature-card p-4 text-center h-100">
+            <div class="feature-icon mb-2"><i class="bi bi-cash-stack"></i></div>
+            <h5 class="fw-bold mb-1">Controle de Pagamentos</h5>
+            <p class="mb-0">Visualize mensalidades, registre pagamentos e mantenha tudo em dia.</p>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="feature-card p-4 text-center h-100">
+            <div class="feature-icon mb-2"><i class="bi bi-list-task"></i></div>
+            <h5 class="fw-bold mb-1">Planos Personalizados</h5>
+            <p class="mb-0">Crie e gerencie diferentes planos de mensalidade conforme a necessidade.</p>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="feature-card p-4 text-center h-100">
+            <div class="feature-icon mb-2"><i class="bi bi-clock-history"></i></div>
+            <h5 class="fw-bold mb-1">Registros de Entrada/Saída</h5>
+            <p class="mb-0">Acompanhe a frequência e os horários dos alunos com facilidade.</p>
+        </div>
+    </div>
+</div>
+
+<div class="mt-5 text-center text-muted">
+    <small>
+        <i class="bi bi-shield-lock"></i>
+        Seus dados estão protegidos e acessíveis apenas para administradores autorizados.
+    </small>
 </div>
